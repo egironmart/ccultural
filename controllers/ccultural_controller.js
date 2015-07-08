@@ -2,7 +2,7 @@ var models = require('../models/models.js');
 
 //GET actos (lista de actos)
 exports.index = function (req, res) {
-	models.Actos.findAll({where: {pasado: 0}}).then(function (acto) {
+	models.Actos.findAll({where: {pasado: false}}).then(function (acto) {
    	res.render('actos/lista', { acto: acto});
 	})
 };
