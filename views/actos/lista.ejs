@@ -1,0 +1,22 @@
+<article>
+	<table>
+		<tr>
+			<th>Acto</th>
+			<th>Data</th>
+			<th>Hora</th>
+			<th>Activo</th>
+		</tr> 
+		<% var i; for (i=0; i < acto.length; i++) { %>   
+			<tr>
+				<td><a href="/actos/<%= acto[i].id %>"><%= acto[i].nome %></a></td>
+				<td><%= acto[i].data%></td>
+				<td><%= acto[i].hora%></td>
+				<% if (acto[i].activo) { %>			
+					<td>Activo</td>
+				<% } else { %>
+					<td>Anulado</td>
+				<% } %>
+			</tr>
+		<% } %>
+	</table>
+</article>
