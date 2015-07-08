@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Compostela Cultural' });
 });
 
-router.get('/actos/acto', cculturalController.acto);
+//GET lista de actos
+router.get('/actos',               cculturalController.index);
+
+//GET un acto concreto
+router.get('/actos/:actoId(\\d+)', cculturalController.show);
 
 module.exports = router;

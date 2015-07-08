@@ -32,3 +32,14 @@ nav span{
 a {
   color: #00B7FF;
 }
+table, th, td{
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px;
+}
+th{
+	text-align: center;
+}
+article{
+	text-align: left;
+}
