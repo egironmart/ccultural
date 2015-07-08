@@ -8,6 +8,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Compostela Cultural' });
 });
 
+//Autoload de comandos con :actoId
+router.param('actoId', cculturalController.load);
+
 //GET lista de actos
 router.get('/actos',               cculturalController.index);
 
