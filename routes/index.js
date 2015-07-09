@@ -21,4 +21,10 @@ router.get('/actos/:actoId(\\d+)',  cculturalController.show);
 router.get('/actos/new',            cculturalController.new);
 router.post('/actos/crear',         cculturalController.crear);
 
+//GET editar acto
+router.get('/actos/:actoId(\\d+)/edit',  cculturalController.edit);
+
+//PUT actualizar acto
+router.put('/actos/:actoId(\\d+)',  cculturalController.update);
+
 module.exports = router;

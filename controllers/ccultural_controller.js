@@ -71,3 +71,47 @@ exports.crear = function (req, res) {
 	);
 };
 
+//GET /actos/:actoId/edit Editar un acto xa gardado
+exports.edit = function (req, res) {
+	var acto = req.acto; //Autoload da instancia
+	
+	res.render('actos/edit', {acto: acto, erros:[]});
+};
+
+//PUT /actos/:id Actualiza as modificacións do acto
+exports.update = function (req, res) {
+	req.acto.nome =       req.body.acto.nome;
+	req.acto.data =       req.body.acto.data;
+	req.acto.hora =       req.body.acto.hora;
+	req.acto.lugar =      req.body.acto.lugar;
+	req.acto.tipo =       req.body.acto.tipo;
+	req.acto.descricion = req.body.acto.descricion;
+	req.acto.foto =       req.body.acto.foto;
+	req.acto.activo =     req.body.acto.activo;
+	req.acto.pasado =     req.body.acto.pasado;
+	
+	req.acto.validate().then(
+		function (err) {
+			if (err) {
+				res.render('actos/edit', {acto: req.acto, erros: err.errors});
+			} else {
+				req.acto
+				.save(
+					{fields: 
+						[	"nome",
+							"data",
+							"hora",
+							"lugar",
+							"tipo",
+							"descricion",
+							"foto",
+							"activo",
+							"pasado"
+						]
+					}
+				)
+				.then(function () {res.redirect('/actos');});
+			}
+		}
+	);
+};

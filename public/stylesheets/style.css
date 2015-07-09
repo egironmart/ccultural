@@ -28,7 +28,6 @@ footer{
 }
 nav span{
 	margin: 0px 5px 0px 0px;
-	
 }
 a {
   color: #00B7FF;
@@ -62,5 +61,8 @@ div #botons{
 }
 #ErrorMsgs{
 	color: #f61;
-	font-size: smaller;
+	font-size: small;
+}
+#erros{
+	color: red;
 }
