@@ -22,7 +22,16 @@
           <span><a href="/actos" >Actos</a></span>
        </nav>
        <section class="main" id="s1">
-          <%- body %>
+       	<% if (erros.length) { %>
+       	   <span id="ErrorMsgs">
+       	   	Erros a correxir:<br />
+       	   	<% for (var i in erros) { %>
+       	   		<span><%= erros[i].message %></span><br />
+       	   	<% } %>
+       	   </span>
+       	 <% } %>
+       	 
+          <div><%- body %></div>
        </section>
        <footer class="main" id="f1">
           <p>&copy;Enrique Girón - 2015</p>

@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  padding: 0;  
+  padding: 0;
 }
 body {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -27,7 +27,8 @@ footer{
 	text-align: center;
 }
 nav span{
-	margin: 0px 10px 0px 0px;
+	margin: 0px 5px 0px 0px;
+	
 }
 a {
   color: #00B7FF;
@@ -42,4 +43,24 @@ th{
 }
 article{
 	text-align: left;
+	height: 100%;
+}
+#form{
+	width: 470px;
+	padding: 0 5px;
+	margin: 0 auto;
+	background: #00B7FF;
+	text-align: left;
+}
+div label{
+	width: 25%;
+	float: left;
+}
+div #botons{
+	padding-top: 10px;
+	text-align: center;
+}
+#ErrorMsgs{
+	color: #f61;
+	font-size: smaller;
 }

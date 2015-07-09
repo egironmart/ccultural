@@ -5,16 +5,20 @@ var cculturalController = require('../controllers/ccultural_controller');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Compostela Cultural' });
+  res.render('index', { title: 'Compostela Cultural', erros:[]});
 });
 
 //Autoload de comandos con :actoId
-router.param('actoId', cculturalController.load);
+router.param('actoId',              cculturalController.load);
 
 //GET lista de actos
-router.get('/actos',               cculturalController.index);
+router.get('/actos',                cculturalController.index);
 
 //GET un acto concreto
-router.get('/actos/:actoId(\\d+)', cculturalController.show);
+router.get('/actos/:actoId(\\d+)',  cculturalController.show);
+
+//Get novo acto
+router.get('/actos/new',            cculturalController.new);
+router.post('/actos/crear',         cculturalController.crear);
 
 module.exports = router;
