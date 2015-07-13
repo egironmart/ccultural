@@ -29,13 +29,13 @@ exports.show = function (req, res) {
 //GET de novo acto
 exports.new = function (req, res) {
 	var acto = models.Actos.build(
-		{ nome:       "Nome do acto",
-		  data:       "Data",
-		  hora:       "Hora",
-		  lugar:      "Lugar",
-		  tipo:       "Tipo de acto ",
-		  descricion: "Breve descrición do contido",
-		  foto:       "Foto",
+		{ nome:       "",
+		  data:       "",
+		  hora:       "",
+		  lugar:      "",
+		  tipo:       "",
+		  descricion: "",
+		  foto:       "",
 		  activo:     "",
 		  pasado:     ""
 		}
@@ -114,4 +114,13 @@ exports.update = function (req, res) {
 			}
 		}
 	);
+};
+
+//DELETE /actos/:id
+exports.destroy = function (req, res) {
+	req.acto.destroy().then(
+		function () {
+			res.redirect('/actos');
+		}
+	).catch (function (error) {next(error)});
 };

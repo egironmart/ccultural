@@ -1,29 +1,41 @@
 <label for="nom" class="rem">Nome:</label>
-<input type="text" id="nom" name="acto[nome]" value="<%= acto.nome %>" /> <p></p>
+<input placeholder="Nome do acto" size="50" maxlength="255" type="text" id="nom" name="acto[nome]" value="<%= acto.nome %>" /> <p></p>
 
-<label for="dat" class="rem">Data:</label>
-<input type="text" id="dat" name="acto[data]" value="<%= acto.data %>" /> <p></p>
+<label for="dat" class="rem">Data: (dd/mm/aaaa) </label>
+<input placeholder="Data" size="8" maxlength="8" type="text" id="dat" name="acto[data]" value="<%= acto.data %>" /> <p></p>
 
-<label for="hor" class="rem">Hora:</label>
-<input type="text" id="hor" name="acto[hora]" value="<%= acto.hora %>" /> <p></p>
+<label for="hor" class="rem">Hora: (hh:mm)</label>
+<input placeholder="Hora" size="5" maxlength="5" type="text" id="hor" name="acto[hora]" value="<%= acto.hora %>" /> <p></p>
 
 <label for="lug" class="rem">Lugar:</label>
-<input type="text" id="lug" name="acto[lugar]" value="<%= acto.lugar %>" /> <p></p>
+<input placeholder="Lugar de celebración" size="50" maxlength="255" type="text" id="lug" name="acto[lugar]" value="<%= acto.lugar %>" /> <p></p>
 
-<label for="tip" class="rem">Tipo:</label>
-<input type="text" id="tip" name="acto[tipo]" value="<%= acto.tipo %>" /> <p></p>
+<label for="acto[tipo]" class="rem">Tipo:</label>
+	<select name="acto[tipo]">
+		<option value="Artes escénicas">Artes escénicas</option>
+		<option value="Conferencias">Conferencias</option>
+		<option value="Exposicións">Exposicións</option>
+		<option value="Cine">Cine</option>
+		<option value="Concursos e premios">Concursos e premios</option>
+		<option value="Cursos e talleres">Cursos e talleres</option>
+		<option value="Formación">Formación</option>
+		<option value="Roda de prensa">Roda de prensa</option>
+		<option value="Outros">Outros</option>
+	</select> <p></p>
 
 <label for="des" class="rem">Descrición:</label>
-<input type="text" id="des" name="acto[descricion]" value="<%= acto.descricion %>" /> <p></p>
+<textarea placeholder="Descrición do acto" cols="48" rows="10" maxlength="1000" id="des" name="acto[descricion]"><%= acto.descricion %></textarea>
 
 <label for="fot" class="rem">Foto:</label>
-<input type="text" id="fot" name="acto[foto]" value="<%= acto.foto %>" /> <p></p>
+<input placeholder="Foto de anuncio do acto" size="50" maxlength="255" type="text" id="fot" name="acto[foto]" value="<%= acto.foto %>" /> <p></p>
 
 <label for="act" class="rem">Activo:</label>
-<input type="text" id="act" name="acto[activo]" value="<%= acto.activo %>" /> <p></p>
+<% if (acto.activo){acto.activo="1"} else {acto.activo="0"} %>
+<input size="1" maxlength="1" type="text" id="act" name="acto[activo]" value="<%= acto.activo %>" /> <p></p>
 
 <label for="pas" class="rem">Pasado:</label>
-<input type="text" id="pas" name="acto[pasado]" value="<%= acto.pasado %>" /> <p></p>
+<% if (acto.pasado){acto.pasado="1"} else {acto.pasado="0"} %>
+<input size="1" maxlength="1" type="text" id="pas" name="acto[pasado]" value="<%= acto.pasado %>" /> <p></p>
 
 <div id="botons">
 	<a href="/actos"><button type="button">Cancelar</button></a>

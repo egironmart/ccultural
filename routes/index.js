@@ -27,4 +27,7 @@ router.get('/actos/:actoId(\\d+)/edit',  cculturalController.edit);
 //PUT actualizar acto
 router.put('/actos/:actoId(\\d+)',  cculturalController.update);
 
+//DELETE borrar acto
+router.delete('/actos/:actoId(\\d+)',  cculturalController.destroy);
+
 module.exports = router;

@@ -2,8 +2,8 @@
   margin: 0;
   padding: 0;
 }
-body {
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+body, textarea, input {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 #page-wrap{
   margin: 2% auto;
@@ -21,6 +21,7 @@ section > div{
 header,nav,section{
 	background: #eee;
 	text-align: center;
+	font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 footer{
 	background: #eee;
@@ -45,11 +46,18 @@ article{
 	height: 100%;
 }
 #form{
-	width: 470px;
+	width: 600px;
 	padding: 0 5px;
 	margin: 0 auto;
 	background: #00B7FF;
 	text-align: left;
+}
+#formEdit{
+	width: 600px;
+	padding: 0 5px;
+	margin: 0 auto;
+	text-align: left;
+	background-color: #FAAC58;
 }
 div label{
 	width: 25%;

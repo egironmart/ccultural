@@ -1,5 +1,7 @@
 Edita o acto: <p></p>
 
-<form method="post" action="/actos/<%= acto.id %>?_method=put">
-	<% include _form.ejs %>
-</form>
+<div id="formEdit">
+	<form method="post" action="/actos/<%= acto.id %>?_method=put">
+		<% include _form.ejs %>
+	</form>
+</div>
