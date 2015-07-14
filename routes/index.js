@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var cculturalController = require('../controllers/ccultural_controller');
+var cculturalController   = require('../controllers/ccultural_controller');
+var comentariosController = require('../controllers/comentarios_controller');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -29,5 +30,9 @@ router.put('/actos/:actoId(\\d+)',  cculturalController.update);
 
 //DELETE borrar acto
 router.delete('/actos/:actoId(\\d+)',  cculturalController.destroy);
+
+//Creación de comentarios
+router.get('/actos/:actoId(\\d+)/comentarios/new',  comentariosController.new);
+router.post('/actos/:actoId(\\d+)/comentarios/',    comentariosController.crear);
 
 module.exports = router;

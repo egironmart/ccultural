@@ -1,7 +1,33 @@
 <article>
-	<p><b>Nome:</b> <%= acto.nome%></p>
-	<p><b>Lugar:</b> <%= acto.lugar%></p>
-	<p><b>Descrición:</b> <%= acto.descricion%></p>
+	<table>
+		<tr>
+			<td><b>Nome:</b></td>
+			<td><%= acto.nome%></td>
+		</tr>
+		<tr>
+			<td><b>Tipo:</b></td>
+			<td><%= acto.tipo%></td>
+		</tr>
+		<tr>
+			<td><b>Lugar:</b></td>
+			<td><%= acto.lugar%></td>
+		</tr>
+		<tr>
+			<td><b>Hora:</b></td>
+			<td><%= acto.hora%></td>
+		</tr>
+		<tr>
+			<td><b>Descripción:</b></td>
+			<td><%= acto.descricion%></td>
+		</tr>
+	</table>
+	<div id="coment">
+		<p><a href="/actos/<%= acto.id %>/comentarios/new"><button>Novo comentario</button></a></p>
+		<p><strong>Comentarios sobre este acto:</strong></p>
+			<% for(var index in acto.Comentarios){ %>
+	   		<p>- <%= acto.Comentarios[index].texto %></p>
+			<% } %>
+	</div>
 </article>
 <footer>
 	<a href="/actos">Voltar</a>

@@ -74,3 +74,8 @@ div #botons{
 #erros{
 	color: red;
 }
+div #coment{
+	padding: 10px;
+	text-align: center;
+	background-color: #F79F81;
+}

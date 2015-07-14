@@ -27,9 +27,15 @@ var sequelize = new Sequelize(DB_name, user, pwd,
   }      
 );
 
-//Importa a definición da táboa Actos en actos.js
-var Actos = sequelize.import(path.join(__dirname,'actos'));
-exports.Actos = Actos; //Exporta a definición da táboa
+//Importa a definición das táboas
+var Actos       = sequelize.import(path.join(__dirname,'actos'));
+var Comentarios = sequelize.import(path.join(__dirname,'comentarios'));
+
+Comentarios.belongsTo(Actos);
+Actos.hasMany(Comentarios);
+
+exports.Actos = Actos;             //Exporta a definición da táboa Actos
+exports.Comentarios = Comentarios; //Exporta a definición da táboa Comentarios
 
 //Crea e inicializa a táboa
 sequelize.sync().then(function () {
@@ -43,8 +49,8 @@ sequelize.sync().then(function () {
 	   	   tipo:       'Conferencia',
 	   	   descricion: 'Descición da conferencia que terá lugar.',
 	   	   foto:       '',
-	   	   activo:     'true',
-	   	   pasado:     'false'
+	   	   activo:     '1',
+	   	   pasado:     '0'
 			}).then(function () {console.log('Base de datos inicializada')});
 		}
 	});

@@ -2,7 +2,8 @@ var models = require('../models/models.js');
 
 //Autoload - factoriza o código se a ruta inclúe :actoId
 exports.load = function (req, res, next, actoId) {
-	models.Actos.findById(actoId).then(
+	models.Actos.findById(actoId, {include:[{model: models.Comentarios}]})
+	   .then(
 		function (acto) {
 			if (acto) {
 				req.acto = acto;
@@ -21,7 +22,7 @@ exports.index = function (req, res) {
 
 //GET actos/acto (datos dun acto concreto)
 exports.show = function (req, res) {
-	models.Actos.findById(req.params.actoId).then(function(acto){
+	models.Actos.findById(req.params.actoId, {include:[{model: models.Comentarios}]}).then(function(acto){
 		res.render('actos/acto', { acto: acto, erros:[]});
 	})
 };
