@@ -75,7 +75,18 @@ div #botons{
 	color: red;
 }
 div #coment{
+	clear: both;
 	padding: 10px;
 	text-align: center;
 	background-color: #F79F81;
+}
+.caixa{
+	padding: 0px;
+	width: 300px;
+	height: 300px;
+	float: left;
+}
+.imaxe{
+	max-width: 100%;
+	height: auto;
 }

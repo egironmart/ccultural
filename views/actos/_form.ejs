@@ -2,7 +2,7 @@
 <input placeholder="Nome do acto" size="50" maxlength="255" type="text" id="nom" name="acto[nome]" value="<%= acto.nome %>" /> <p></p>
 
 <label for="dat" class="rem">Data: (dd/mm/aaaa) </label>
-<input placeholder="Data" size="8" maxlength="8" type="text" id="dat" name="acto[data]" value="<%= acto.data %>" /> <p></p>
+<input placeholder="Data" size="10" maxlength="10" type="text" id="dat" name="acto[data]" value="<%= acto.data %>" /> <p></p>
 
 <label for="hor" class="rem">Hora: (hh:mm)</label>
 <input placeholder="Hora" size="5" maxlength="5" type="text" id="hor" name="acto[hora]" value="<%= acto.hora %>" /> <p></p>
@@ -12,15 +12,51 @@
 
 <label for="acto[tipo]" class="rem">Tipo:</label>
 	<select name="acto[tipo]">
-		<option value="Artes escénicas">Artes escénicas</option>
-		<option value="Conferencias">Conferencias</option>
-		<option value="Exposicións">Exposicións</option>
-		<option value="Cine">Cine</option>
-		<option value="Concursos e premios">Concursos e premios</option>
-		<option value="Cursos e talleres">Cursos e talleres</option>
-		<option value="Formación">Formación</option>
-		<option value="Roda de prensa">Roda de prensa</option>
-		<option value="Outros">Outros</option>
+		<% if (acto.tipo === 'Artes escénicas') { %>
+			<option value="Artes escénicas" selected>Artes escénicas</option>
+		<% } else { %>
+			<option value="Artes escénicas">Artes escénicas</option>
+		<% } %>
+		<% if (acto.tipo === 'Conferencias') { %>
+			<option value="Conferencias" selected>Conferencias</option>
+		<% } else { %>
+			<option value="Conferencias">Conferencias</option>
+		<% } %>
+		<% if (acto.tipo === 'Exposicións') { %>
+			<option value="Exposicións" selected>Exposicións</option>
+		<% } else { %>
+			<option value="Exposicións">Exposicións</option>
+		<% } %>
+		<% if (acto.tipo === 'Cine') { %>		
+			<option value="Cine" selected>Cine</option>
+		<% } else { %>
+			<option value="Cine">Cine</option>
+		<% } %>
+		<% if (acto.tipo === 'Concursos e premios') { %>
+			<option value="Concursos e premios" selected>Concursos e premios</option>
+		<% } else { %>
+			<option value="Concursos e premios">Concursos e premios</option>
+		<% } %>
+		<% if (acto.tipo === 'Cursos e talleres') { %>
+			<option value="Cursos e talleres" selected>Cursos e talleres</option>
+		<% } else { %>
+			<option value="Cursos e talleres">Cursos e talleres</option>
+		<% } %>
+		<% if (acto.tipo === 'Formación') { %>
+			<option value="Formación" selected>Formación</option>
+		<% } else { %>
+			<option value="Formación">Formación</option>
+		<% } %>
+		<% if (acto.tipo === 'Roda de prensa') { %>
+			<option value="Roda de prensa" selected>Roda de prensa</option>
+		<% } else { %>
+			<option value="Roda de prensa">Roda de prensa</option>
+		<% } %>
+		<% if (acto.tipo === 'Outros') { %>
+			<option value="Outros" selected>Outros</option>
+		<% } else { %>
+			<option value="Outros">Outros</option>
+		<% } %>
 	</select> <p></p>
 
 <label for="des" class="rem">Descrición:</label>
@@ -30,12 +66,27 @@
 <input placeholder="Foto de anuncio do acto" size="50" maxlength="255" type="text" id="fot" name="acto[foto]" value="<%= acto.foto %>" /> <p></p>
 
 <label for="act" class="rem">Activo:</label>
-<% if (acto.activo){acto.activo="1"} else {acto.activo="0"} %>
-<input size="1" maxlength="1" type="text" id="act" name="acto[activo]" value="<%= acto.activo %>" /> <p></p>
+<select name="acto[activo]">
+	<% if (acto.activo) { %>
+		<option value="1" selected>Activo</option>
+		<option value="0">Anulado</option>
+	<% } else { %>
+		<option value="1">Activo</option>
+		<option value="0" selected>Anulado</option>
+	<% } %>
+</select><p></p>
 
 <label for="pas" class="rem">Pasado:</label>
-<% if (acto.pasado){acto.pasado="1"} else {acto.pasado="0"} %>
-<input size="1" maxlength="1" type="text" id="pas" name="acto[pasado]" value="<%= acto.pasado %>" /> <p></p>
+<select name="acto[pasado]">
+	<% if (!acto.pasado) { %>
+		<option value="0" selected>Vixente</option>
+		<option value="1">Pasado</option>
+	<% } else { %>
+		<option value="0">Vixente</option>
+		<option value="1" selected>Pasado</option>
+	<% } %>
+</select><p></p>
+
 
 <div id="botons">
 	<a href="/actos"><button type="button">Cancelar</button></a>
