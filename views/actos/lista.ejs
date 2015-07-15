@@ -6,7 +6,9 @@
 			<th>Data</th>
 			<th>Hora</th>
 			<th>Activo</th>
-			<th colspan="2">Accións</th>
+			<% if(session.user){ %>
+				<th colspan="2">Accións</th>
+			<% } %>
 		</tr> 
 		<% var i; for (i=0; i < acto.length; i++) { %>   
 			<tr>
@@ -19,14 +21,19 @@
 				<% } else { %>
 					<td>Anulado</td>
 				<% } %>
-				<td><a href="/actos/<%= acto[i].id %>/edit"><button>Editar</button></a></td>
-				<td>
-					<form method="post" action="actos/<%= acto[i].id %>?_method=delete">
-						<button type="submit" onclick="return confirm('Queres borrar este acto?');">Borrar</button>
-					</form>
-				</td>
+				
+				<% if(session.user){ %>
+					<td><a href="/actos/<%= acto[i].id %>/edit"><button>Editar</button></a></td>
+					<td>
+						<form method="post" action="actos/<%= acto[i].id %>?_method=delete">
+							<button type="submit" onclick="return confirm('Queres borrar este acto?');">Borrar</button>
+						</form>
+					</td>
+				<% } %>
 			</tr>
 		<% } %>
 	</table>
-	<a href="/actos/new"><button type="button">Novo Acto</button></a>
+	<% if(session.user){ %>
+		<a href="/actos/new"><button type="button">Novo Acto</button></a>
+	<% } %>
 </article>

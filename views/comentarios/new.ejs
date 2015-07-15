@@ -3,6 +3,7 @@ Engadir comentario:
 <form method="post" action="/actos/<%= actoid %>/comentarios/">
 	<!-- <input type="text" id="comment" name="comentario[texto]" value="" size="50" /> <p></p> -->
 	<textarea placeholder="Comentario" cols="50" rows="10" maxlength="500" id="des" name="comentario[texto]"></textarea><p></p>
+	
 	<a href="/actos/<%= actoid %>/"><button type="button">Cancelar</button></a>	
 	<button type="submit">Enviar</button>
 </form>

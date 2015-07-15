@@ -30,7 +30,11 @@
 		</tr>
 	</table>
 	<div id="coment">
-		<p><a href="/actos/<%= acto.id %>/comentarios/new"><button>Novo comentario</button></a></p>
+		<p><a href="/actos/<%= acto.id %>/comentarios/new">
+			<% if(session.user){ %>
+				<button>Novo comentario</button>
+			<% } %>
+		</a></p>
 		<p><strong>Comentarios sobre este acto:</strong></p>
 			<% for(var index in acto.Comentarios){ %>
 	   		<p>- <%= acto.Comentarios[index].texto %></p>
