@@ -16,7 +16,14 @@ exports.load = function (req, res, next, actoId) {
 //GET actos (lista de actos)
 exports.index = function (req, res) {
 	models.Actos.findAll({where: {pasado: false}}).then(function (acto) {
-   	res.render('actos/lista', { acto: acto, erros:[]});
+   	res.render('actos/lista', { acto: acto, pasado: "0", erros:[]});
+	})
+};
+
+//GET pasados (lista de actos pasados)
+exports.pasados = function (req, res) {
+	models.Actos.findAll({where: {pasado: true}}).then(function (acto) {
+   	res.render('actos/lista', { acto: acto, pasado: "1", erros:[]});
 	})
 };
 

@@ -21,12 +21,15 @@ router.get('/logout', sessionController.destroy); //Acabar a sesión
 //GET lista de actos
 router.get('/actos',                cculturalController.index);
 
+//GET lista actos xa pasados
+router.get('/pasados',                cculturalController.pasados);
+
 //GET un acto concreto
 router.get('/actos/:actoId(\\d+)',  cculturalController.show);
 
 //Get novo acto
 router.get('/actos/new',            sessionController.loginRequired, cculturalController.new);
-router.post('/actos/crear',         sessionController.loginRequired,cculturalController.crear);
+router.post('/actos/crear',         sessionController.loginRequired, cculturalController.crear);
 
 //GET editar acto
 router.get('/actos/:actoId(\\d+)/edit',  sessionController.loginRequired,cculturalController.edit);
@@ -38,7 +41,7 @@ router.put('/actos/:actoId(\\d+)',  sessionController.loginRequired,cculturalCon
 router.delete('/actos/:actoId(\\d+)',  sessionController.loginRequired,cculturalController.destroy);
 
 //Creación de comentarios
-router.get('/actos/:actoId(\\d+)/comentarios/new',  comentariosController.new);
-router.post('/actos/:actoId(\\d+)/comentarios/',    comentariosController.crear);
+router.get('/actos/:actoId(\\d+)/comentarios/new',  sessionController.loginRequired, comentariosController.new);
+router.post('/actos/:actoId(\\d+)/comentarios/',    sessionController.loginRequired, comentariosController.crear);
 
 module.exports = router;

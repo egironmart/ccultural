@@ -1,4 +1,9 @@
 <article>
+	<% if (pasado === "1"){ %>
+		<h2>Actos xa pasados</h2>
+	<% } else { %>
+		<h2>Actos en vixencia</h2>
+	<% } %>
 	<table>
 		<tr>
 			<th>Acto</th>
@@ -6,7 +11,7 @@
 			<th>Data</th>
 			<th>Hora</th>
 			<th>Activo</th>
-			<% if(session.user){ %>
+			<% if(session.user && session.user.id === 1){ %>
 				<th colspan="2">Accións</th>
 			<% } %>
 		</tr> 
@@ -22,7 +27,7 @@
 					<td>Anulado</td>
 				<% } %>
 				
-				<% if(session.user){ %>
+				<% if(session.user && session.user.id === 1){ %>
 					<td><a href="/actos/<%= acto[i].id %>/edit"><button>Editar</button></a></td>
 					<td>
 						<form method="post" action="actos/<%= acto[i].id %>?_method=delete">
@@ -33,7 +38,7 @@
 			</tr>
 		<% } %>
 	</table>
-	<% if(session.user){ %>
+	<% if(session.user && session.user.id === 1){ %>
 		<a href="/actos/new"><button type="button">Novo Acto</button></a>
 	<% } %>
 </article>

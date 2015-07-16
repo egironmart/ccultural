@@ -1,6 +1,6 @@
 //Autorización para accións restrinxidas
 exports.loginRequired = function (req, res, next) {
-	if (req.session.use) {
+	if (req.session.user) {
 		next();
 	}else {
 		res.redirect('/login');

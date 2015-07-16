@@ -34,7 +34,7 @@ app.use( function (req, res, next) {
 	if (!req.path.match(/\/login|\/logout/)) {
 		req.session.redir = req.path;
 	}
-	
+
 	//Fai visible req.session nas vistas
 	res.locals.session = req.session;
 	next();
