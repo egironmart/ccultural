@@ -14,34 +14,27 @@
   </head>
   <body>
     <div id="page-wrap">
-		<header class="main" id="h1">
-			<div class="acceso">
-	       	<% if(!session.user){ %>
-	       		<span><a class="left" href="/login">Login</a></span>
-	       	<% } else { %>
-	       		<div class="cabeceira">
-	       		 	<span> Usuario: </span><p></p>
-	       		 	<span class="usuario"><%= session.user.username %></span>
-	       		 </div> 
-	       		 <p></p>
-	       		 <span><a class="right" href="/logout">Logout</a></span>
-	       	<%}%>
-       	</div>
-
+       <header class="main" id="h1">
+       	<% if(!session.user){ %>
+       		<span class="right"><a href="/login">Login</a></span>
+       	<% } else { %>
+       		<div class="cabeceira">
+       		 	<span> Usuario: </span>
+       		 	<span id="centro"><%= session.user.username %></span>
+       		 </div> 
+       		 <span><a class="right" href="/logout">Logout</a></span>
+       	<%}%>
        	<div class="titulo">
-       		<img src="/images/logo_portada.png" alt="logo concello" />
+       		<img src="images/logo_portada.png" alt="logo concello" />
        		<h2>Compostela Cultural</h2>
-      	</div>
-		</header>
-       
+         </div>
+       </header>
 		<div class="clear"></div>
-
        <nav class="main" id="n1" role="navigation">
           <span><a href="/" >Inicio</a></span>
           <span><a href="/actos" >Actos</a></span>
           <span><a href="/pasados" >Actos pasados</a></span>
        </nav>
-       
        <section class="main" id="s1">
        	<% if (erros.length) { %>
        	   <span id="ErrorMsgs">
@@ -54,11 +47,9 @@
        	 
           <div><%- body %></div>
        </section>
-       
        <footer class="main" id="f1">
           <p>&copy;Enrique Girón - 2015</p>
        </footer>
-
     </div>
   </body>
 </html>

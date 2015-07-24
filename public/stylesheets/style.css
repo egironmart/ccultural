@@ -38,6 +38,9 @@ table, th, td{
 	border-collapse: collapse;
 	padding: 5px;
 }
+#anulado{
+	background-image: url(../images/anulado.gif);
+}
 th{
 	text-align: center;
 }
@@ -92,20 +95,48 @@ div #coment{
 }
 .right{
 	float: right;
+	padding-right: 10px;
 }
-#centro{
-	text-align: center;
-	color: red;
+.left{
+	float: left;
+	width: 10%
+}
+div label{
+	text-align: right;
 }
 .field{
-	text-align: center;;
+	text-align: left;
+	padding-left: 60px
+	margin-left: 60px;
+	margin-top: 10px;
+	margin-bottom: 10px
+}
+.field > input{
+	margin-left: 10px;
+}
+.field > label{
+	margin-left: 50px;
 }
 .cabeceira{
 	border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border: 1px solid #000000;
-	width: 200px;
+	width: 20%;
 	text-align: center;
 	float: left;
+}
+.titulo {
+	text-align: center;
+	display: inline-block;
+}
+.titulo > img{
+	width: 75px;
+	height: 100px;
+}
+div.clear{
+	clear: both;
+}
+span.usuario{
+	color: red;
 }

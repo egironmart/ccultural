@@ -38,7 +38,7 @@
 			</tr>
 		<% } %>
 	</table>
-	<% if(session.user && session.user.id === 1){ %>
+	<% if(session.user && session.user.id === 1 && pasado==="0"){ %>
 		<a href="/actos/new"><button type="button">Novo Acto</button></a>
 	<% } %>
 </article>

@@ -3,7 +3,11 @@
 		<img class="imaxe" src="/images/<%= acto.foto%>" alt="foto do acto">
 	</div>
 
-	<table>
+ 	<% if (!acto.activo) {%> 
+	 	<table id="anulado"> 
+ 	<%} else { %>
+		<table>
+	<% } %>
 		<tr>
 			<td><b>Nome:</b></td>
 			<td><%= acto.nome%></td>
@@ -29,6 +33,7 @@
 			<td><%= acto.descricion%></td>
 		</tr>
 	</table>
+			
 	<div id="coment">
 		<p><a href="/actos/<%= acto.id %>/comentarios/new">
 			<% if(session.user){ %>
