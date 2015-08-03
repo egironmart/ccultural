@@ -1,9 +1,11 @@
 <article>
-	<% if (pasado === "1"){ %>
-		<h2>Actos xa pasados</h2>
-	<% } else { %>
-		<h2>Actos en vixencia</h2>
+	<% if (pasado === "0"){ %>
+		<div class="submenu">
+			<span><a href="/actos" >Todos</a></span>
+      	<span><a href="/hoxe" >Hoxe</a></span><p></p>
+		</div>
 	<% } %>
+	<h2><%= cabeceira %></h2>
 	<table>
 		<tr>
 			<th>Acto</th>

@@ -24,6 +24,9 @@ router.get('/actos',                cculturalController.index);
 //GET lista actos xa pasados
 router.get('/pasados',                cculturalController.pasados);
 
+//GET actos para hoxe
+router.get('/hoxe',                cculturalController.hoxe);
+
 //GET un acto concreto
 router.get('/actos/:actoId(\\d+)',  cculturalController.show);
 

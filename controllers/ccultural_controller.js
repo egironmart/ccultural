@@ -15,15 +15,34 @@ exports.load = function (req, res, next, actoId) {
 
 //GET actos (lista de actos)
 exports.index = function (req, res) {
+	var cab = "Actos programados";
 	models.Actos.findAll({where: {pasado: false}}).then(function (acto) {
-   	res.render('actos/lista', { acto: acto, pasado: "0", erros:[]});
+   	res.render('actos/lista', { acto: acto, pasado: "0", cabeceira: cab, erros:[]});
 	})
 };
 
 //GET pasados (lista de actos pasados)
 exports.pasados = function (req, res) {
+	var cab = "Actos xa pasados";
 	models.Actos.findAll({where: {pasado: true}}).then(function (acto) {
-   	res.render('actos/lista', { acto: acto, pasado: "1", erros:[]});
+   	res.render('actos/lista', { acto: acto, pasado: "1", cabeceira: cab, erros:[]});
+	})
+};
+
+//GET hoxe (lista de actos para o día)
+exports.hoxe = function (req, res) {
+	var cab = "Actos no día de hoxe";
+	var f = new Date();
+	var dia = f.getDate();
+	var mes = f.getMonth()+1
+	var ano = f.getFullYear();
+	
+	if (dia < 10) {dia = "0"+ dia};
+	if (mes < 10) {mes = "0"+ mes};
+
+   var dataAct = dia+"/"+mes+"/"+ano;
+	models.Actos.findAll({where: {data: dataAct}}).then(function (acto) {
+   	res.render('actos/lista', { acto: acto, pasado: "0", cabeceira: cab, erros:[]});
 	})
 };
 

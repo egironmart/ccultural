@@ -140,3 +140,15 @@ div.clear{
 span.usuario{
 	color: red;
 }
+.submenu{
+	background-color: #CEE3F6;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 1px solid #000000;
+	word-spacing: 50px;
+	text-align: center;
+}
+a:active{
+	color: #0000FF;
+}
