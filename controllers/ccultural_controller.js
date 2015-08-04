@@ -151,3 +151,26 @@ exports.destroy = function (req, res) {
 		}
 	).catch (function (error) {next(error)});
 };
+
+//Actualiza datas se xa pasou o acto
+//Se está pasado, pon o indicador pasado = 1.
+exports.actualiza = function(req, res, next){
+	var f = new Date();
+	var dia = f.getDate();
+	var mes = f.getMonth()+1
+	var ano = f.getFullYear();
+	
+	if (dia < 10) {dia = "0"+ dia};
+	if (mes < 10) {mes = "0"+ mes};
+	var dataAct = dia+"/"+mes+"/"+ano;
+	
+	models.Actos.findAll({where: {pasado: false}}).then(function (acto) {
+		for (i=0; i < acto.length; i++) {
+			if (dataAct > acto[i].data) {
+				acto[i].pasado = "1";
+				acto[i].save({fields: ["pasado"]});
+			}
+		}
+	});
+	next();
+}

@@ -19,10 +19,11 @@ router.post('/login', sessionController.create);  //Crear nova sesión
 router.get('/logout', sessionController.destroy); //Acabar a sesión
 
 //GET lista de actos
-router.get('/actos',                cculturalController.index);
+//Primeiro comproba se os actos son actuais. Se están pasados (días anteriores), pon o indicador de pasado a 1
+router.get('/actos',                cculturalController.actualiza, cculturalController.index);
 
 //GET lista actos xa pasados
-router.get('/pasados',                cculturalController.pasados);
+router.get('/pasados',              cculturalController.pasados);
 
 //GET actos para hoxe
 router.get('/hoxe',                cculturalController.hoxe);
