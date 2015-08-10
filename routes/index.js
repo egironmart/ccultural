@@ -4,6 +4,7 @@ var router = express.Router();
 var cculturalController   = require('../controllers/ccultural_controller');
 var comentariosController = require('../controllers/comentarios_controller');
 var sessionController     = require('../controllers/session_controller');
+var usuariosController    = require('../controllers/usuarios_controller');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,6 +13,10 @@ router.get('/', function(req, res, next) {
 
 //Autoload de comandos con :actoId
 router.param('actoId',              cculturalController.load);
+
+//Rutas de novo usuario
+router.get('/novousu',  usuariosController.new);     //Formulario de novo usuario
+router.post('/novousu', usuariosController.crear);  //Creación do novo usuario
 
 //Rutas de sesión
 router.get('/login',  sessionController.new);     //Formulario de login

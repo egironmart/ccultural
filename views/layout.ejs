@@ -17,14 +17,14 @@
 		<header class="main" id="h1">
 			<div class="acceso">
 	       	<% if(!session.user){ %>
-	       		<span><a class="left" href="/login">Login</a></span>
+	       		<a class="un" href="/login">Acceder</a>
+	       		<a class="un" href="/novousu">Novo usuario</a>
 	       	<% } else { %>
 	       		<div class="cabeceira">
-	       		 	<span> Usuario: </span><p></p>
+	       		 	<span> Usuario: </span>
 	       		 	<span class="usuario"><%= session.user.username %></span>
 	       		 </div> 
-	       		 <p></p>
-	       		 <span><a class="right" href="/logout">Logout</a></span>
+	       		 <span><a href="/logout">Pechar</a></span>
 	       	<%}%>
        	</div>
 
@@ -56,7 +56,7 @@
        </section>
        
        <footer class="main" id="f1">
-          <p>&copy;Enrique Girón - 2015</p>
+          <p>&copy; Enrique Girón - 2015</p>
        </footer>
 
     </div>

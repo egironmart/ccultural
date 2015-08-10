@@ -30,12 +30,14 @@ var sequelize = new Sequelize(DB_name, user, pwd,
 //Importa a definición das táboas
 var Actos       = sequelize.import(path.join(__dirname,'actos'));
 var Comentarios = sequelize.import(path.join(__dirname,'comentarios'));
+var Usuarios    = sequelize.import(path.join(__dirname,'usuarios'));
 
 Comentarios.belongsTo(Actos);
 Actos.hasMany(Comentarios);
 
 exports.Actos = Actos;             //Exporta a definición da táboa Actos
 exports.Comentarios = Comentarios; //Exporta a definición da táboa Comentarios
+exports.Usuarios = Usuarios;       //Exporta a definición da táboa Usuarios
 
 //Crea e inicializa a táboa
 sequelize.sync().then(function () {

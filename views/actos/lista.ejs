@@ -17,16 +17,22 @@
 				<th colspan="2">Accións</th>
 			<% } %>
 		</tr> 
-		<% var i; for (i=0; i < acto.length; i++) { %>   
+		<% var i; for (i=0; i < acto.length; i++) {
+			var dia = acto[i].data.substr(6,2);
+			var mes = acto[i].data.substr(4,2);
+			var ano = acto[i].data.substr(0,4);
+			
+			var data = dia+"/"+mes+"/"+ano;
+		%>   
 			<tr>
 				<td><a href="/actos/<%= acto[i].id %>"><%= acto[i].nome %></a></td>
 				<td><%= acto[i].tipo%></td>
-				<td><%= acto[i].data%></td>
+				<td><%= data%></td>
 				<td><%= acto[i].hora%></td>
 				<% if (acto[i].activo) { %>			
 					<td>Activo</td>
 				<% } else { %>
-					<td>Anulado</td>
+					<td class="anulado">Anulado</td>
 				<% } %>
 				
 				<% if(session.user && session.user.id === 1){ %>

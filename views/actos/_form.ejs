@@ -1,8 +1,15 @@
+<%
+	var dia = acto.data.substr(6,2);
+	var mes = acto.data.substr(4,2);
+	var ano = acto.data.substr(0,4);
+	
+	var data = dia+"/"+mes+"/"+ano;
+%>
 <label for="nom" class="rem">Nome:</label>
 <input placeholder="Nome do acto" size="50" maxlength="255" type="text" id="nom" name="acto[nome]" value="<%= acto.nome %>" /> <p></p>
 
 <label for="dat" class="rem">Data: (dd/mm/aaaa) </label>
-<input placeholder="Data" size="10" maxlength="10" type="date" id="dat" name="acto[data]" value="<%= acto.data %>" /> <p></p>
+<input placeholder="Data" size="10" maxlength="10" type="date" id="dat" name="acto[data]" value="<%= data %>" /> <p></p>
 
 <label for="hor" class="rem">Hora: (hh:mm)</label>
 <input placeholder="Hora" size="5" maxlength="5" type="text" id="hor" name="acto[hora]" value="<%= acto.hora %>" /> <p></p>

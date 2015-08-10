@@ -94,6 +94,7 @@ div #coment{
 	height: auto;
 }
 .right{
+	clear: both;
 	float: right;
 	padding-right: 10px;
 }
@@ -117,18 +118,8 @@ div label{
 .field > label{
 	margin-left: 50px;
 }
-.cabeceira{
-	border-radius: 10px 10px 10px 10px;
-	-moz-border-radius: 10px 10px 10px 10px;
-	-webkit-border-radius: 10px 10px 10px 10px;
-	border: 1px solid #000000;
-	width: 20%;
-	text-align: center;
-	float: left;
-}
 .titulo {
 	text-align: center;
-	display: inline-block;
 }
 .titulo > img{
 	width: 75px;
@@ -149,6 +140,27 @@ span.usuario{
 	word-spacing: 50px;
 	text-align: center;
 }
-a:active{
+.submenu a:active{
+	color: #0000FF;
+}
+
+.anulado{
+	color: red;
+}
+.acceso{
+	float: left;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 1px solid #0000FF;
+	word-spacing: 50px;
+	text-align: center;
+	width: 10%;
+	padding-left: 10px;
+}
+.un {
+	display: block;
+	width: 60px;
+	padding-bottom: 10px;
 	color: #0000FF;
 }

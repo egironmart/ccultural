@@ -16,7 +16,7 @@ exports.load = function (req, res, next, actoId) {
 //GET actos (lista de actos)
 exports.index = function (req, res) {
 	var cab = "Actos programados";
-	models.Actos.findAll({where: {pasado: false}}).then(function (acto) {
+	models.Actos.findAll({where: {pasado: false}, order:['data','hora']}).then(function (acto) {
    	res.render('actos/lista', { acto: acto, pasado: "0", cabeceira: cab, erros:[]});
 	})
 };
@@ -24,7 +24,7 @@ exports.index = function (req, res) {
 //GET pasados (lista de actos pasados)
 exports.pasados = function (req, res) {
 	var cab = "Actos xa pasados";
-	models.Actos.findAll({where: {pasado: true}}).then(function (acto) {
+	models.Actos.findAll({where: {pasado: true}, order:['data','hora']}).then(function (acto) {
    	res.render('actos/lista', { acto: acto, pasado: "1", cabeceira: cab, erros:[]});
 	})
 };
@@ -40,7 +40,7 @@ exports.hoxe = function (req, res) {
 	if (dia < 10) {dia = "0"+ dia};
 	if (mes < 10) {mes = "0"+ mes};
 
-   var dataAct = dia+"/"+mes+"/"+ano;
+   var dataAct = (ano+mes+dia).toString();
 	models.Actos.findAll({where: {data: dataAct}}).then(function (acto) {
    	res.render('actos/lista', { acto: acto, pasado: "0", cabeceira: cab, erros:[]});
 	})
@@ -73,6 +73,12 @@ exports.new = function (req, res) {
 //POST crear novo acto
 exports.crear = function (req, res) {
 	var acto = models.Actos.build(req.body.acto);
+	
+	var dia = req.body.acto.data.substr(0,2);
+	var mes = req.body.acto.data.substr(3,2);
+	var ano = req.body.acto.data.substr(6,4);
+	
+	acto.data = (ano+mes+dia).toString();
 	
 	acto.validate().then(function (err) {
 		if (err) {
@@ -108,7 +114,7 @@ exports.edit = function (req, res) {
 //PUT /actos/:id Actualiza as modificacións do acto
 exports.update = function (req, res) {
 	req.acto.nome =       req.body.acto.nome;
-	req.acto.data =       req.body.acto.data;
+//	req.acto.data =       req.body.acto.data;
 	req.acto.hora =       req.body.acto.hora;
 	req.acto.lugar =      req.body.acto.lugar;
 	req.acto.tipo =       req.body.acto.tipo;
@@ -116,6 +122,12 @@ exports.update = function (req, res) {
 	req.acto.foto =       req.body.acto.foto;
 	req.acto.activo =     req.body.acto.activo;
 	req.acto.pasado =     req.body.acto.pasado;
+	
+	var dia = req.body.acto.data.substr(0,2);
+	var mes = req.body.acto.data.substr(3,2);
+	var ano = req.body.acto.data.substr(6,4);
+	
+	req.acto.data = (ano+mes+dia).toString();
 	
 	req.acto.validate().then(
 		function (err) {
@@ -162,8 +174,8 @@ exports.actualiza = function(req, res, next){
 	
 	if (dia < 10) {dia = "0"+ dia};
 	if (mes < 10) {mes = "0"+ mes};
-	var dataAct = dia+"/"+mes+"/"+ano;
-	
+	var dataAct = (ano+mes+dia).toString(); //Convirte a formato internacional: yyyymmaa
+
 	models.Actos.findAll({where: {pasado: false}}).then(function (acto) {
 		for (i=0; i < acto.length; i++) {
 			if (dataAct > acto[i].data) {
@@ -172,5 +184,6 @@ exports.actualiza = function(req, res, next){
 			}
 		}
 	});
+
 	next();
 }

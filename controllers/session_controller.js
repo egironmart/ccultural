@@ -31,12 +31,14 @@ exports.create = function (req, res) {
 		
 		//Se non hai erros, creamos req.session.user con id de sesión e nome de usuario
 		req.session.user = {id: user.id, username: user.username};
-		res.redirect(req.session.redir.toString()); //Redirixe ao sitio onde estaba cando inicia a sesión
+		//res.redirect(req.session.redir.toString()); //Redirixe ao sitio onde estaba cando inicia a sesión
+		res.redirect('/#');
 	});
 };
 
 //DELETE /logout - Finaliza a sesión
 exports.destroy = function (req, res) {
 	delete req.session.user;
-	res.redirect(req.session.redir.toString()); //Redirixe ao sitio onde estaba
+	//res.redirect(req.session.redir.toString()); //Redirixe ao sitio onde estaba
+	res.redirect('/#');
 };

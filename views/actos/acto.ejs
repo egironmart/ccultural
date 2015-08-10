@@ -1,6 +1,6 @@
 <article>
 	<div class="caixa">
-		<img class="imaxe" src="/images/<%= acto.foto%>" alt="foto do acto">
+		<img class="imaxe" src="../images/<%= acto.foto%>" alt="foto do acto">
 	</div>
 
  	<% if (!acto.activo) {%> 
@@ -22,7 +22,14 @@
 		</tr>
 		<tr>
 			<td><b>Data:</b></td>
-			<td><%= acto.data%></td>
+			<%
+				var dia = acto.data.substr(6,2);
+				var mes = acto.data.substr(4,2);
+				var ano = acto.data.substr(0,4);
+			
+				var data = dia+"/"+mes+"/"+ano;
+			%>
+			<td><%= data%></td>
 		</tr>
 		<tr>
 			<td><b>Hora:</b></td>
