@@ -10,7 +10,8 @@ exports.crear = function (req, res) {
 	var comentario = models.Comentarios.build(
 		//Atributos da táboa de comentarios
 		{ texto: req.body.comentario.texto,
-		  ActoId: req.params.actoId
+		  ActoId: req.params.actoId,
+		  UsuarioId: req.session.user.id 
 		}
 	);
 	

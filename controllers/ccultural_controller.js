@@ -48,7 +48,18 @@ exports.hoxe = function (req, res) {
 
 //GET actos/acto (datos dun acto concreto)
 exports.show = function (req, res) {
+	var nomes = [];
 	models.Actos.findById(req.params.actoId, {include:[{model: models.Comentarios}]}).then(function(acto){
+		for (var index in acto.Comentarios) {
+			models.Usuarios.findById(acto.Comentarios[index].UsuarioId).then(function (usu) {
+				nomes.push(usu.usuario);
+			})
+		}
+console.log(nomes.length);
+		for (var i in acto.Comentarios) {
+			console.log(i + " " + nomes[i]);
+			console.log(acto.Comentarios[i].texto);
+		}
 		res.render('actos/acto', { acto: acto, erros:[]});
 	})
 };

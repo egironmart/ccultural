@@ -24,13 +24,13 @@ exports.create = function (req, res) {
 	userController.autenticar(login, password, function (error, user) {
 		//Se hai algun erro no inicio da sesión
 		if (error) {
-			req.session.errors = [{"message": 'Erro no inicio de sesión: '+error}];
+			req.session.errors = [{"message": 'Erro no inicio de sesión -> '+error}];
 			res.redirect('/login');
 			return;
 		}
 		
 		//Se non hai erros, creamos req.session.user con id de sesión e nome de usuario
-		req.session.user = {id: user.id, username: user.username};
+		req.session.user = {id: user.id, username: user.usuario, admin: user.admin};
 		//res.redirect(req.session.redir.toString()); //Redirixe ao sitio onde estaba cando inicia a sesión
 		res.redirect('/#');
 	});

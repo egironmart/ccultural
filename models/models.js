@@ -35,6 +35,11 @@ var Usuarios    = sequelize.import(path.join(__dirname,'usuarios'));
 Comentarios.belongsTo(Actos);
 Actos.hasMany(Comentarios);
 
+//Probar
+Comentarios.belongsTo(Usuarios);
+Usuarios.hasMany(Comentarios);
+//Fin probar
+
 exports.Actos = Actos;             //Exporta a definición da táboa Actos
 exports.Comentarios = Comentarios; //Exporta a definición da táboa Comentarios
 exports.Usuarios = Usuarios;       //Exporta a definición da táboa Usuarios

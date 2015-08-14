@@ -49,6 +49,7 @@
 		</a></p>
 		<p><strong>Comentarios sobre este acto:</strong></p>
 			<% for(var index in acto.Comentarios){ %>
+				<p>  <%= acto.Comentarios[index].nome %></p>
 	   		<p>- <%= acto.Comentarios[index].texto %></p>
 			<% } %>
 	</div>
